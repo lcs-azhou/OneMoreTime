@@ -52,3 +52,31 @@ func getInput(withPrompt prompt: String, minimum: Int?, maximum: Int?) -> Int {
     }
     
 }
+
+func isDivisor(dividend: Int, divisor: Int) -> Bool {
+    // Add logic to determine whether provided divisor actually
+    // goes evenly into the provided dividend
+    // (e.g.: remainder is zero)
+
+    // Return the result...
+    if dividend % divisor == 0 {
+        return true
+    } else {
+        return false
+    }
+}
+
+func sumOfDivisor(number:Int) -> Int {
+    
+    var sum = 0
+    
+    for i in 1...number - 1{
+        let result = isDivisor(dividend: number, divisor: i)
+        
+        if result == true {
+            sum += i
+        }
+    }
+    
+    return sum
+}
