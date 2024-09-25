@@ -66,7 +66,7 @@ func isDivisor(dividend: Int, divisor: Int) -> Bool {
     }
 }
 
-func sumOfDivisor(number:Int) -> Int {
+func sumOfDivisor(for number:Int) -> Int {
     
     var sum = 0
     
@@ -80,3 +80,35 @@ func sumOfDivisor(number:Int) -> Int {
     
     return sum
 }
+
+func catagorize(number:Int) -> String {
+    
+    let result = sumOfDivisor(for: number)
+    
+    enum Probabilities {
+        case deficent, perfect, abundant
+    }
+
+    var checkingProbabilities = Probabilities.abundant
+    
+    if result < number{
+        checkingProbabilities = .deficent
+    }else if result == number{
+        checkingProbabilities = .perfect
+    }else {
+        checkingProbabilities = .abundant
+    }
+    
+    switch checkingProbabilities {
+
+    case.deficent:
+        return("Deficient")
+    case.abundant:
+        return("Abundant")
+    default:
+        return("Perfect")
+    }
+    
+}
+
+let actualPrompt = getInput(withPrompt: "", minimum: 1, maximum: 32500)
